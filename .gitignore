@@ -27,3 +27,7 @@ override.tf.json
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
+credentials/labce-350710-17f927aba8a6.json
+notes.txt
+credentials/labgce-ssh-key
+credentials/labgce-ssh-key.pub
