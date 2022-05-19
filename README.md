@@ -122,6 +122,36 @@ gce_ssh_pub_key_file_path="../credentials/labgce-ssh-key.pub"
 
 >Explain what the files created by Terraform are used for.
 
+```bash
+.
+├── .terraform
+│   ├── plan.cache
+│   ├── providers
+│   │   └── registry.terraform.io
+│   │       └── hashicorp
+│   │           └── google
+│   │               └── 4.21.0
+│   │                   └── darwin_arm64
+│   │                       └── terraform-provider-google_v4.21.0_x5
+│   └── terraform.tfstate
+├── .terraform.lock.hcl
+├── backend.tf
+├── main.tf
+├── outputs.tf
+├── terraform.tfvars
+└── variables.tf
+````
+
+- main :
+- variables : 
+- outputs :
+- terraform.tfvars : 
+- backend : 
+- .terraform.lock.hcl : A Terraform configuration may refer to two different kinds of external dependency that come from outside of its own codebase:
+Providers, which are plugins for Terraform that extend it with support for interacting with various external systems.
+Modules, which allow splitting out groups of Terraform configuration constructs (written in the Terraform language) into reusable abstractions.
+Both of these dependency types can be published and updated independently from Terraform itself and from the configurations that depend on them. For that reason, Terraform must determine which versions of those dependencies are potentially compatible with the current configuration and which versions are currently selected for use.
+
 >Where is the Terraform state saved? Imagine you are working in a team and the other team members want to use Terraform, too, to manage the cloud infrastructure. Do you see any problems with this? Explain.
 
 >What happens if you reapply the configuration (1) without changing main.tf (2) with a change in main.tf? Do you see any changes in Terraform's output? Why? Can you think of exemples where Terraform needs to delete parts of the infrastructure to be able to reconfigure it?
