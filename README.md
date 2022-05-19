@@ -85,7 +85,40 @@ resource "google_compute_firewall" "http" {
 }
 ```
 
+outputs.tf
 
+```terraform
+/* Print values in the CLI output after running terraform apply
+  Here the External IP of the instance will be displayed
+*/
+
+output "gce_instance_ip" {
+  value = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
+}
+```
+
+variables.tf
+
+```terraform
+/* Print values in the CLI output after running terraform apply
+  Here the External IP of the instance will be displayed
+*/
+output "gce_instance_ip" {
+  value = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
+}
+```
+
+terraform.tfvars
+
+```terraform
+// Set env vars
+
+gcp_project_id="labce-350710"
+gcp_service_account_key_file_path="../credentials/labce-350710-17f927aba8a6.json"
+gce_instance_name="l7grp"
+gce_instance_user="rhyan"
+gce_ssh_pub_key_file_path="../credentials/labgce-ssh-key.pub"
+```
 
 >Explain what the files created by Terraform are used for.
 
