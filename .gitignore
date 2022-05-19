@@ -31,3 +31,4 @@ credentials/labce-350710-17f927aba8a6.json
 notes.txt
 credentials/labgce-ssh-key
 credentials/labgce-ssh-key.pub
+terraform/.terraform.lock.hcl
