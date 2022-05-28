@@ -329,3 +329,33 @@ deprecation_warnings = false
 [webservers]
 gce_instance ansible_ssh_host=34.65.199.76
 ```
+
+### TASK 6: ADDING A HANDLER FOR NGINX RESTART
+
+#### Deliverables Task 6
+
+> Copy the modified playbook into your report.
+
+```yaml
+- name: Configure webserver with nginx # Playbook Name 
+  hosts: webservers # Set target hosts (here are only instance)
+  become: True # Activate privilege escalation
+  tasks:  # Tasks to run
+    - name: install nginx
+      apt: name=nginx update_cache=yes
+    - name: copy nginx config file
+      copy: src=files/nginx.conf dest=/etc/nginx/sites-available/default
+      notify: restart nginx
+    - name: enable configuration
+      file: >
+        dest=/etc/nginx/sites-enabled/default
+        src=/etc/nginx/sites-available/default
+        state=link
+      notify: restart nginx
+    - name: copy index.html
+      template: src=templates/index.html.j2 dest=/usr/share/nginx/html/index.html mode=0644
+    - name: restart nginx
+      service: 
+        name=nginx 
+        state=restarted
+```
