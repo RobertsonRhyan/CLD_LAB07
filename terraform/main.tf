@@ -70,3 +70,14 @@ resource "google_compute_firewall" "http" {
     protocol = "tcp"
   }
 }
+
+// Same as for HTTP but for HTTPS
+resource "google_compute_firewall" "https" {
+  name          = "allow-https"
+  network       = "default"
+  source_ranges = ["0.0.0.0/0"]
+  allow {
+    ports    = ["443"]
+    protocol = "tcp"
+  }
+}
