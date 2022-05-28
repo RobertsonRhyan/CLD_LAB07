@@ -142,17 +142,22 @@ gce_ssh_pub_key_file_path="../credentials/labgce-ssh-key.pub"
 └── variables.tf
 ````
 
-- main :
-- variables : 
-- outputs :
-- terraform.tfvars : 
-- backend : 
-- .terraform.lock.hcl : A Terraform configuration may refer to two different kinds of external dependency that come from outside of its own codebase:
-Providers, which are plugins for Terraform that extend it with support for interacting with various external systems.
-Modules, which allow splitting out groups of Terraform configuration constructs (written in the Terraform language) into reusable abstractions.
-Both of these dependency types can be published and updated independently from Terraform itself and from the configurations that depend on them. For that reason, Terraform must determine which versions of those dependencies are potentially compatible with the current configuration and which versions are currently selected for use.
+"the module" = root module in this case
+
+- main : Contains the main set of configuration for the module
+- variables : Contains the variable definitions for the module
+- outputs : Contains the output definitions for the module
+- terraform.tfvars : Contains the arguments passed to the module
+- backend : Primarily determine where Terraform stores its state.
+- .terraform.lock.hcl : Version constraints within the configuration itself determine which versions of dependencies are potentially compatible, but after selecting a specific version of each dependency Terraform remembers the decisions it made in the dependency lock file so that it can (by default) make the same decisions again in future.
+- terraform.tfstate : Used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures.
+- plan.cache : Store the "plan" (the changes that will be made to your infrastructure).
+- providers : Used to provision resources, which describe one or more infrastructure objects like virtual networks and compute instances.
 
 >Where is the Terraform state saved? Imagine you are working in a team and the other team members want to use Terraform, too, to manage the cloud infrastructure. Do you see any problems with this? Explain.
+
+The state is saved in the terraform.tfstate file on local machine by default.
+If multiple people want to change the state, the best practise is to store terraform.tfstate in a Terraform backend. 
 
 >What happens if you reapply the configuration (1) without changing main.tf (2) with a change in main.tf? Do you see any changes in Terraform's output? Why? Can you think of exemples where Terraform needs to delete parts of the infrastructure to be able to reconfigure it?
 
