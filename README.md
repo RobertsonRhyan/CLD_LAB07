@@ -255,4 +255,77 @@ The IP of the instance might change.
 
 > Explain the usage of each file and its contents, add comments to the different blocks if needed (we must ensure that you understood what you have done). Link to the online documentation. Link to the online documentation.
 
+```bash
+.
+├── ansible
+│   ├── ansible.cfg
+│   ├── hosts
+│   └── playbooks
+│       ├── files
+│       │   └── nginx.conf
+│       ├── templates
+│       │   └── index.html.j2
+│       └── web.yml
+├── credentials
+│   ├── labgce-service-account-key.json
+│   ├── labgce-ssh-key
+│   └── labgce-ssh-key.pub
+└── terraform
+    ├── backend.tf
+    ├── main.tf
+    ├── outputs.tf
+    ├── terraform.tfstate
+    ├── terraform.tfstate.backup
+    ├── terraform.tfvars
+    └── variables.tf
+```
+
+- ansible.cfg : The main config file for Ansible.
+
+```bash
+[defaults]
+# Set inventory to the hosts file we created
+inventory = hosts
+# Set user name for the SSH connection
+remote_user = rhyan
+# Set path to SSH priv key
+private_key_file = ~/Documents/GitHub/CLD/CLD_LAB07/credentials/labgce-ssh-key
+# Disable for debuging (Every time we recreate an instance, the key while change)
+host_key_checking = false
+# Disable warnings
+deprecation_warnings = false
+````
+
+- hosts : Contains inventory
+- playbooks/web.yml : Is the playbook that we\'re using to setup the NGINX server.
+
+```yml
+- name: Configure webserver with nginx # Playbook Name 
+  hosts: webservers # Set target hosts (here are only instance)
+  become: True # Activate privilege escalation
+  tasks:  # Tasks to run
+    - name: install nginx
+      apt: name=nginx update_cache=yes
+    - name: copy nginx config file
+      copy: src=files/nginx.conf dest=/etc/nginx/sites-available/default
+    - name: enable configuration
+      file: >
+        dest=/etc/nginx/sites-enabled/default
+        src=/etc/nginx/sites-available/default
+        state=link
+    - name: copy index.html
+      template: src=templates/index.html.j2 dest=/usr/share/nginx/html/index.html mode=0644
+    - name: restart nginx
+      service: name=nginx state=restarted
+
+```
+
+- files/nginx.conf : NGINX config file, copy when the playbook is run
+- templates/index.html.j2 : Our landing page, also copy via the playbook.
+
 > Copy your hosts file into your report.
+
+```bash
+[webservers]
+gce_instance ansible_ssh_host=34.65.199.76
+```
