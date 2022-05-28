@@ -395,3 +395,5 @@ The main advantages of manualy managing the infrastructure :
 > Suppose you now have a web server in production that you have configured using Ansible. You are working in the IT department of a company and some of your system administrator colleagues who don't use Ansible have logged manually into some of the servers to fix certain things. You don't know what they did exactly. What do you need to do to bring all the server again to the initial state? We'll exclude drastic changes by your colleagues for this question.
 
 ### TASK 8 (OPTIONAL): CONFIGURE YOUR INFRASTRUCTURE USING A CI/CD PIPELINE
+
+#### Deliverables Task 8
