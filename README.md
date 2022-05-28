@@ -359,3 +359,39 @@ gce_instance ansible_ssh_host=34.65.199.76
         name=nginx 
         state=restarted
 ```
+
+### TASK 7: TEST DESIRED STATE CONFIGURATION PRINCIPLES
+
+#### Deliverables Task 7
+
+> Return to the output of running the web.yml playbook the first time. There is one additional task that was not in the playbook. Which one? 
+
+Gathering Facts
+
+> Among the tasks that are in the playbook there is one task that Ansible marked as ok. Which one? Do you have a possible explanation?
+
+TASK [Enable configuration], it's status is "ok" because it creates a symbolic and doesn\'t copy a file.
+
+> What is the differences between Terraform and Ansible? Can they both achieve the same goal?
+
+Terraform is more of an Orchestration tool whereas Ansible is more of a Configuration Management tool.
+Terraform is Declarative and Ansible is Procedural.
+
+They can both achieve the same goal, although in a limited way.
+
+> List the advantages and disadvantages of managing your infrastructure with Terraform/Ansible vs. manually managing your infrastructure. In which cases is one or the other solution more suitable?
+
+The main advantages of Terraform/Ansible for managing the infrastructure :
+
+- Copy the exact same infrastructure (e.g. for Dev, Test and Prod)
+- Avoid documentation drift (Difference between documentation and actual state of infrastructure). Any modification to the code reprensents the actual state. No more forgetting to update the documentation.
+- Backup. If a disater occurs and the infrastructre is lost, we can just rerun the code to have the same setup.
+
+The main advantages of manualy managing the infrastructure :
+
+- Easier for debuging and testing
+- Good for learing the intricacies of infrastructre
+
+> Suppose you now have a web server in production that you have configured using Ansible. You are working in the IT department of a company and some of your system administrator colleagues who don't use Ansible have logged manually into some of the servers to fix certain things. You don't know what they did exactly. What do you need to do to bring all the server again to the initial state? We'll exclude drastic changes by your colleagues for this question.
+
+### TASK 8 (OPTIONAL): CONFIGURE YOUR INFRASTRUCTURE USING A CI/CD PIPELINE
