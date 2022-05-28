@@ -240,3 +240,19 @@ Add another instance in main.tf
 >Take a screenshot of the Google Cloud Console showing your Google Compute instance and put it in the report.
 
 ![Google Compute Instance](/screenshots/02_01.png)
+
+### TASK 4: CONFIGURE ANSIBLE TO CONNECT TO THE MANAGED VM
+
+#### Deliverables Task 4
+
+> What happens if the infrastructure is deleted and then recreated with Terraform? What needs to be updated to access the infrastructure again?
+
+The IP of the instance might change.
+
+### TASK 5: INSTALL A WEB SERVER AND CONFIGURE A WEB SITE
+
+#### Deliverables Task 5
+
+> Explain the usage of each file and its contents, add comments to the different blocks if needed (we must ensure that you understood what you have done). Link to the online documentation. Link to the online documentation.
+
+> Copy your hosts file into your report.
