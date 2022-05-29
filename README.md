@@ -394,6 +394,33 @@ The main advantages of manualy managing the infrastructure :
 
 > Suppose you now have a web server in production that you have configured using Ansible. You are working in the IT department of a company and some of your system administrator colleagues who don't use Ansible have logged manually into some of the servers to fix certain things. You don't know what they did exactly. What do you need to do to bring all the server again to the initial state? We'll exclude drastic changes by your colleagues for this question.
 
+Destroy and rerun terraform
+
 ### TASK 8 (OPTIONAL): CONFIGURE YOUR INFRASTRUCTURE USING A CI/CD PIPELINE
 
 #### Deliverables Task 8
+
+> Explain the usage of each file and its contents, add comments to the different blocks if needed (we must ensure that you understood what you have done). Link to the online documentation.
+
+> Explain what CI/CD stands for.
+
+Continuous integration and continuous delivery
+
+> Where is the Terraform state saved? Paste a screenshot where you can see the state with its details in GitLab.
+
+![](screenshots/08_01.png)
+
+> Paste a link to your GitLab repository as well as a link to a successful end-to-end pipeline (creation, configuration and destruction of your infrastructure).
+
+https://gitlab.com/RobertsonRhyan/labgce
+
+Can't get the ansible playbook to work (SSH issue)
+https://gitlab.com/RobertsonRhyan/labgce/-/pipelines/550715482
+
+> Why are some steps manual? What do we try to prevent here?
+
+Maybe to make sure that the instance is up and running
+
+> List the advantages and disadvantages of managing your infrastructure locally or on a platform such as GitLab. In which cases is one or the other solution more suitable?
+
+Working in a team is easier with GitLab but can be a lot of overhead for 1 person
