@@ -2,6 +2,12 @@
 
 ## LAB07: Infrastructure-as-Code and Configuration Management - Terraform, Ansible and GitLab
 
+De Bleser Dimitri, Peer Vincent, Robertson Rhyan
+
+29.05.2022
+
+https://github.com/RobertsonRhyan/CLD_LAB07
+
 ### TASK 2: CREATE A CLOUD INFRASTRUCTURE ON GOOGLE COMPUTE ENGINE WITH TERRAFORM
 
 #### Deliverables Task 2
